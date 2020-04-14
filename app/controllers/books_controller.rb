@@ -20,8 +20,8 @@ class BooksController < ApplicationController
 
   def update
     #respond back with the updated book in json
-    updated_book = {id: "#{@data.length}", title: "#{params[:name]}", author: "#{params[:writer]}"}
-    
+    updated_book = {id: "#{@data[params[:id].to_i - 1]}", title: "#{params[:name]}", author: "#{params[:writer]}"}
+    @data[params[:id].to_i - 1] = updated_book
     render json: updated_book
   end
 
